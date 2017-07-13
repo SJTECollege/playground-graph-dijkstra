@@ -1,61 +1,53 @@
 # Dijkstra's Algorithm
 
-This short playground will give you some fundamentals about Dijkstra's algorithm.
+Dijkstra's Algorithm allows you to calculate the shortest path between one node (you pick which one) and _every other node in the graph_. Let's study the algorithm with an explained example! let's calculate the shortest path between node A and the other nodes in our graph:
 
-# Prerequisites
-* Graph Theory Fundamentals: graphs, vertices and edges.
+![Graph example](dj-ini.png "")
 
-# Weighted graphs
+(It's the same graph than before; I've just moved the numbers so everything is more readable during the explanation.)
 
-In some applications, it's useful to model data as a graph with weighted edges. These graphs are called "weighted graphs". What are "weighted edges", you wonder? Consider this graph:
+We'll mark every node with its minimum distance to node A (our selected node). For node A, this distance is 0. For the rest of nodes, as we still don't know that minimum distance, it's infinity (∞).
 
-![Graph example](graph.png "")
+![Graph example](dj-mark.png "")
 
-Let's imagine that each node is a City, and each edge is an existing road between two cities. This means that you can drive from A to B directly. However, you can't drive from A to C directly, as there's no road between those cities; instead, you need to go from A to B and then from B to C.
+Now, we set our _current node_ to A (our selected node). In the image, we mark the current node with a red dot.
 
-Now, not every road is equal. Some of them are longer, some aren't in good shape (so you need to go slowly), some have more traffic... In short: you need more time for traversing some roads than other. We may represent that time with weights that we assign to the roads (edges of the graph). In the example, let's assume that each number represent the amount of time in hours that it takes you to take a road. This would mean that going from A to B takes 5 hours if you use the road that connects them directly.
+Now, we check the neighbours of our current node (G, F, E and B) in no specific order. Let's begin with G. We add the minimum distance of the current node (in this case, 0) with the weight of the edge that connects our current node with G (in this case, 5), and we obtain 0+5 = 5. We compare that value with the minimum distance of G (infinity); the lowest value is the one that remains as the minimum distance of G (in this case, 5 is less than infinity):
 
-As you will discover, you can represent a lot of different things (time, distance, money...) with the weights in the edges of a graph.
+![Graph example](dj-1.png "")
 
-# Paths
+So far, so good. Now, let's check neighbour F. We add 0 (the minimum distance of A, our current node) with 3 (the weight of the edge connecting our current node with F) to obtain 3. We compare that 3 with the minimum distance of F (infinity), and leave the smallest value:
 
-Suppose that I ask you how much time would it take you to go from F to B. You may say that it would take you 8 hours: 3 hours going from F to A, and 5 hours going from A to B. However, you may also say that you can complete the trip in only 3 hours if you go from F to E and from E to B. There are other routes you can take.
+![Graph example](dj-2.png "")
 
-Formally, a path is _a sequence of edges which connect a sequence of distinct vertices_. If there are no multiple edges in your graph (i.e. parallel edges that connect the same pair of nodes, as if you had two different roads directly connecting the same two cities), you can describe a path simply as the list of nodes it connects. For example, the two paths we mentioned in our example are F, A, B and F, E, B.
+OK. Repeat the same for E and B:
 
-# Shortest paths
+![Graph example](dj-3.png "")
 
-As we said before, it takes 8 hours to traverse path F, A, B, and only 3 hours to traverse path F, E, B. Those times are the _weights_ of those paths. As such, we say that the weight of a path is the sum of the weights of the edges it contains.
+Great. We have checked all the neighbours of A. Because of that, we mark it as _visited_. Let's represent visited nodes with a green check mark:
 
-As you can see, path F, E, B is shorter than path F, A, B. In fact, it is the shortest path between F and B (try to find a shorter one!). Of course, in lots of applications, it would be really useful to be able to calculate in advance what the shortest path between two nodes is.
+![Graph example](dj-adone.png "")
 
-How can we calculate that? There are several options. Dijkstra's algorithm is one of them!
+We now need to pick a new _current node_. That node must be the unvisited node with the smallest minimum distance (so, the node with the smallest number and no check mark). That's F. Let's mark it with the red dot:
 
-pathfindingThis Python template lets you get started quickly with a simple working example. If it is your first contribution then you should have a look at the [Getting Started](https://tech.io/doc/getting-started-create-playground) document.
+![Graph example](dj-f.png "")
 
+And now we repeat the algorithm. We check the neighbours of our current node, ignoring the visited nodes. This means we check G and E.
 
-The source code is on [GitHub](https://github.com/TechDotIO/python-template), please feel free to come up with proposals to improve it.
+For G, we add 3 (the minimum distance of F, our current node) with 3 (the weight of the edge connecting F and G) to obtain 6. We compare that 6 with the minimum distance of G (5) and leave the smallest value; therefore, the 5 remains untouched.
 
-# Hands-on Demo
+For E, we add 3+2 = 5 and compare that value with 4; we leave the 4.
 
-@[Luke, how many stars are there in these galaxies?]({"stubs": ["universe.py"], "command": "python3 test_universe.py"})
+Afterwards, we mark F as visited and pick a new current node: E, which is the non-visited node with the smallest current distance.
 
-Check out the markdown file [`welcome.md`](https://github.com/TechDotIO/python-template/blob/master/markdowns/welcome.md) to see how this exercise is injected into the template.
+![Graph example](dj-f.png "")
 
-# Template Resources
+We repeat the algorithm again. This time, we only check B. We obtain 4+1 = 5; we compare that value with B's minimum distance (5) and leave the minimum one (5). We mark E as visited and pick a new current node. Both G and B have a minimum distance of 5, so we may pick any of them as current node.
 
-[`markdowns/welcome.md`](https://github.com/TechDotIO/python-template/blob/master/markdowns/welcome.md)
-What you are reading here is generated by this file. Tech.io uses the [Markdown syntax](https://tech.io/doc/reference-markdowns) to render text, media and to inject programming exercises.
+Let's skip to the future. After we've marked every node as visited, we'll have this:
 
+![Graph example](dj-end.png "")
 
-[`python-project`](https://github.com/TechDotIO/python-template/tree/master/python-project)
-A simple Python project dedicated to run the programming exercise above. A project relies on a Docker image to run. You can find images on the [Docker Hub](https://hub.docker.com/explore/) or you can even [build your own](https://tech.io/doc/reference-runner).
+We're done! The minimum distance of each node now actually represents the minimum distance from that node to node A (the node we picked as our initial node)!
 
-
-[`techio.yml`](https://github.com/TechDotIO/python-template/blob/master/techio.yml)
-This *mandatory* file describes both the table of content and the programming project(s). The file path should not be changed.
-
-
-# Visual and Interactive Content
-
-Tech.io provides all the tools to embed visual and interactive content like a Web app or a Unix terminal within your contribution. Please refer to the [documentation](https://tech.io/doc) to learn more about the viewer integrations.
+To obtain the paths that correspond to those minimum values, we simply need to keep track of the nodes every time we change the minimum distance of a node.
