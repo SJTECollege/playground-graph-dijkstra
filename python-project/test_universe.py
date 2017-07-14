@@ -26,7 +26,8 @@ def fail():
     
 def test_set_current_node():
     try:
-        count1 = count_all_stars([2, 3])
+        inf = 999999
+        count1 = set_current_node({"A"},{"A":0,"B":5,"C":inf,"D":inf,"E":})
         assert count1 == 5, "Running count_all_stars([2, 3])... Expected 5, got {}".format(count1)
         count2 = count_all_stars([9, -3])
         assert count2 == 6, "Running count_all_stars([9, -3])... Expected 6, got {}".format(count2)
