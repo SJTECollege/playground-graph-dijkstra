@@ -30,3 +30,9 @@ As we said before, it takes 8 hours to traverse path F, A, B, and only 3 hours t
 As you can see, path F, E, B is shorter than path F, A, B. In fact, it is the shortest path between F and B (try to find a shorter one!). Of course, in lots of applications, it would be really useful to be able to calculate in advance what the shortest path between two nodes is. What's the shortest route I can take to go home? What's the cheapest way I can fly from Bucaramanga to Hawaii? How can I efficiently route this data packet from node 1 to node 2 in this network? That kind of questions can be solved with shortest path algorithms or variants.
 
 So... How can we obtain the shortest path in a graph? There are several options. Dijkstra's algorithm is one of them!
+
+?[What is the weight of the shortest path between F and D?]
+-[ ] 7
+-[ ] 6
+-[x] 4
+-[ ] 5

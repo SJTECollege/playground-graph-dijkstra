@@ -1,6 +1,6 @@
 # Dijkstra's Algorithm
 
-Dijkstra's Algorithm allows you to calculate the shortest path between one node (you pick which one) and _every other node in the graph_. Let's study the algorithm with an explained example! let's calculate the shortest path between node A and the other nodes in our graph:
+Dijkstra's Algorithm allows you to calculate the shortest path between one node (you pick which one) and _every other node in the graph_. Let's study the algorithm with an explained example! Let's calculate the shortest path between node A and the other nodes in our graph:
 
 ![Graph example](dj-ini.png "")
 
@@ -49,5 +49,12 @@ Let's skip to the future. After we've marked every node as visited, we'll have t
 ![Graph example](dj-end.png "")
 
 We're done! The minimum distance of each node now actually represents the minimum distance from that node to node A (the node we picked as our initial node)!
+
+Here's a description of the algorithm:
+1. Mark your selected node with a current distance of 0 and the rest with infinity.
+2. Set the node with the smallest current distance as the current node C.
+3. For each neighbour N of your current node: add the current distance of C with the weight of the edge connecting C-N. If it's smaller than the current distance of N, set it as the new current distance of N.
+4. Mark the current node as visited.
+5. If there are unvisited nodes, go to step 2.
 
 To obtain the paths that correspond to those minimum values, we simply need to keep track of the nodes every time we change the minimum distance of a node.
