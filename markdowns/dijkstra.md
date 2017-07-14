@@ -52,9 +52,13 @@ We're done! The minimum distance of each node now actually represents the minimu
 
 Here's a description of the algorithm:
 1. Mark your selected node with a current distance of 0 and the rest with infinity.
-2. Set the node with the smallest current distance as the current node C.
+2. Set the non-visited node with the smallest current distance as the current node C.
 3. For each neighbour N of your current node: add the current distance of C with the weight of the edge connecting C-N. If it's smaller than the current distance of N, set it as the new current distance of N.
 4. Mark the current node as visited.
 5. If there are unvisited nodes, go to step 2.
 
+@[The shown function should obtain the current node for Dijkstra's Algorithm.]({"stubs": ["nodes.py"], "command": "python3 test_nodes.py"})
+
+
+# Next step
 To obtain the paths that correspond to those minimum values, we simply need to keep track of the nodes every time we change the minimum distance of a node.
