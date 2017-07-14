@@ -13,9 +13,9 @@ def test_set_current_node():
     try:
         inf = 999999
         count = set_current_node({"A"}, {"A":0, "B":5, "C":inf, "D":inf, "E":4, "F":3, "G":5})
-        assert count == "F", 'set_current_node({"A"}, {"A":0, "B":5, "C":inf, "D":inf, "E":4, "F":3, "G":5}), expected "F", got {}.'.format(count)
+        assert count == "F", '''set_current_node({"A"}, {"A":0, "B":5, "C":inf, "D":inf, "E":4, "F":3, "G":5}), expected "F", got {}.'.format(count)'''
         count = set_current_node({"A","F"}, {"A":0, "B":5, "C":inf, "D":inf, "E":4, "F":3, "G":5})
-        assert count == "F", 'set_current_node({"A","F"}, {"A":0, "B":5, "C":inf, "D":inf, "E":4, "F":3, "G":5}), expected "E", got {}.'.format(count)
+        assert count == "E", '''set_current_node({"A","F"}, {"A":0, "B":5, "C":inf, "D":inf, "E":4, "F":3, "G":5}), expected "E", got {}.'.format(count)'''
         success()
 
         send_msg("Good job!","Correct. You need to pick the non-visited node with the smallest distance.")
