@@ -1,6 +1,4 @@
-from universe import count_all_stars
-import builtins
-
+from universe import get_graph_edges
 
 sum_builtin_used = False
 
@@ -26,8 +24,7 @@ def success():
 def fail():
     print("TECHIO> success false")
     
-
-def test_count_all_stars():
+def test_set_current_node():
     try:
         count1 = count_all_stars([2, 3])
         assert count1 == 5, "Running count_all_stars([2, 3])... Expected 5, got {}".format(count1)
@@ -55,4 +52,5 @@ def test_count_all_stars():
 
 
 if __name__ == "__main__":
+    matrix = generate_matrix()
     test_count_all_stars()
