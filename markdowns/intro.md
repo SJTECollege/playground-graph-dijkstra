@@ -31,7 +31,7 @@ As you can see, path F, E, B is shorter than path F, A, B. In fact, it is the sh
 
 So... How can we obtain the shortest path in a graph? There are several options. Dijkstra's algorithm is one of them!
 
-?[What is the weight of the shortest path between F and D?]
+?[Exercise: What is the weight of the shortest path between F and D?]
 -[ ] 7
 -[ ] 6
 -[x] 4
