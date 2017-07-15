@@ -58,8 +58,9 @@ Here's a description of the algorithm:
 5. If there are unvisited nodes, go to step 2.
 
 # Exercise
-@[The shown function should select a new current node for Dijkstra's Algorithm. Fix it so it does it correctly.]({"stubs": ["nodes.py"], "command": "python3 test_nodes.py"})
+The shown function is used during step 2 in the algorithm. It selects the node that should be set as current node. Fix it so it picks the correct node.
 
+@[The shown function should select a new current node for Dijkstra's Algorithm. Fix it so it does it correctly.]({"stubs": ["nodes.py"], "command": "python3 test_nodes.py"})
 
 # Next step
 To obtain the paths that correspond to those minimum values, we simply need to keep track of the nodes every time we change the minimum distance of a node. Keep reading to check it out!
