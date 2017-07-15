@@ -1,7 +1,7 @@
 from nodes import set_current_node
 
 def send_msg(channel, msg):
-    print("""TECHIO> message --channel '"""+str(channel)+"""' '"""+str(msg)+"""')"""
+    print("TECHIO> message --channel '"+str(channel)+"' '"+str(msg)+"'")
 
 def success():
     print("TECHIO> success true")
