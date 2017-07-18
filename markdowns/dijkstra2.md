@@ -40,7 +40,7 @@ pathG = [A,G]
 
 Our next current node will be F. When we check its neighbours, we don't modify any minimum distance. Because of that, we also don't replace any current path. Remember: we only replace a current path when we modify the corresponding minimum distance.
 
-Let's fast-forward again. We've just marked E as visited, and our current node is set to D.
+Let's fast-forward again. We've just marked B as visited, and our current node is set to D.
 
 ![Graph example](dj-d.png "")
 
