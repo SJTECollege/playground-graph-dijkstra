@@ -42,7 +42,7 @@ Our next current node will be F. When we check its neighbours, we don't modify a
 
 Let's fast-forward again. We've just marked E as visited, and our current node is set to D.
 
-![Graph example](dj-f.png "")
+![Graph example](dj-d.png "")
 
 ```python
 pathA = [A]
@@ -56,7 +56,9 @@ pathG = [A,G]
 
 We check the only non-visited neighbour of D: C. We add 6+3=9. As that value is less than 10, we change the 10 for the 9 and replace the current path of C for the current path of D + C, so `pathC = [A,B,D,C]`.
 
-After we finish the algorithm, our paths will be the follwing:
+Finally, we set C as our current node. It has no unvisited neighbours, so we're already done with it.
+
+After we finish the algorithm, our paths will be the following:
 
 ```python
 pathA = [A]
