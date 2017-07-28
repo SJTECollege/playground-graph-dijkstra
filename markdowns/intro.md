@@ -9,7 +9,7 @@ This short playground will give you some fundamentals about Dijkstra's algorithm
 
 In some applications, it's useful to model data as a graph with weighted edges. These graphs are called "weighted graphs". What are "weighted edges", you wonder? Consider this graph:
 
-![Graph example](img/graph.png "")
+![Graph example](graph.png "")
 
 Let's imagine that each node is a City, and each edge is an existing road between two cities. This means that you can drive from A to B directly. However, you can't drive from A to D directly, as there's no road between those cities; instead, for example, you need to go from A to B and then from B to D.
 
