@@ -1,6 +1,6 @@
 # Dijkstra's Algorithm
 
-Dijkstra's Algorithm allows you to calculate the shortest path between one node (you pick which one) and _every other node in the graph_. Let's study the algorithm with an explained example! Let's calculate the shortest path between node C and the other nodes in our graph:
+Dijkstra's Algorithm allows you to calculate the shortest path between one node (you pick which one) and _every other node in the graph_. You'll find a description of the algorithm at the end of this page, but, let's study the algorithm with an explained example! Let's calculate the shortest path between node C and the other nodes in our graph:
 
 ![Graph example](graph.png "")
 
