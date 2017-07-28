@@ -1,54 +1,62 @@
 # Dijkstra's Algorithm
 
-Dijkstra's Algorithm allows you to calculate the shortest path between one node (you pick which one) and _every other node in the graph_. Let's study the algorithm with an explained example! Let's calculate the shortest path between node A and the other nodes in our graph:
+Dijkstra's Algorithm allows you to calculate the shortest path between one node (you pick which one) and _every other node in the graph_. Let's study the algorithm with an explained example! Let's calculate the shortest path between node C and the other nodes in our graph:
 
-![Graph example](dj-ini.png "")
+![Graph example](graph.png "")
 
-(It's the same graph than before; I've just moved the numbers so everything is more readable during the explanation.)
+During the algorithm execution, we'll mark every node with its _minimum distance_ to node C (our selected node). For node C, this distance is 0. For the rest of nodes, as we still don't know that minimum distance, it starts being infinity (∞):
 
-We'll mark every node with its minimum distance to node A (our selected node). For node A, this distance is 0. For the rest of nodes, as we still don't know that minimum distance, it's infinity (∞).
+![Graph example](graph_c.png "")
 
-![Graph example](dj-mark.png "")
+We'll also have a _current node_. Initially, we set it to C (our selected node). In the image, we mark the current node with a red dot.
 
-Now, we set our _current node_ to A (our selected node). In the image, we mark the current node with a red dot.
+Now, we check the neighbours of our current node (A, B and D) in no specific order. Let's begin with B. We add the minimum distance of the current node (in this case, 0) with the weight of the edge that connects our current node with B (in this case, 7), and we obtain 0 + 7 = 7. We compare that value with the minimum distance of B (infinity); the lowest value is the one that remains as the minimum distance of B (in this case, 7 is less than infinity):
 
-Now, we check the neighbours of our current node (G, F, E and B) in no specific order. Let's begin with G. We add the minimum distance of the current node (in this case, 0) with the weight of the edge that connects our current node with G (in this case, 5), and we obtain 0+5 = 5. We compare that value with the minimum distance of G (infinity); the lowest value is the one that remains as the minimum distance of G (in this case, 5 is less than infinity):
+![Graph example](graph_c1.png "")
 
-![Graph example](dj-1.png "")
+So far, so good. Now, let's check neighbour A. We add 0 (the minimum distance of C, our current node) with 1 (the weight of the edge connecting our current node with A) to obtain 1. We compare that 1 with the minimum distance of A (infinity), and leave the smallest value:
 
-So far, so good. Now, let's check neighbour F. We add 0 (the minimum distance of A, our current node) with 3 (the weight of the edge connecting our current node with F) to obtain 3. We compare that 3 with the minimum distance of F (infinity), and leave the smallest value:
+![Graph example](graph_c2.png "")
 
-![Graph example](dj-2.png "")
+OK. Repeat the same procedure for D:
 
-OK. Repeat the same for E and B:
+![Graph example](graph_c3.png "")
 
-![Graph example](dj-3.png "")
+Great. We have checked all the neighbours of C. Because of that, we mark it as _visited_. Let's represent visited nodes with a green check mark:
 
-Great. We have checked all the neighbours of A. Because of that, we mark it as _visited_. Let's represent visited nodes with a green check mark:
+![Graph example](graph_cok.png "")
 
-![Graph example](dj-adone.png "")
+We now need to pick a new _current node_. That node must be the unvisited node with the smallest minimum distance (so, the node with the smallest number and no check mark). That's A. Let's mark it with the red dot:
 
-We now need to pick a new _current node_. That node must be the unvisited node with the smallest minimum distance (so, the node with the smallest number and no check mark). That's F. Let's mark it with the red dot:
+![Graph example](graph_a.png "")
 
-![Graph example](dj-f.png "")
+And now we repeat the algorithm. We check the neighbours of our current node, ignoring the visited nodes. This means we only check B.
 
-And now we repeat the algorithm. We check the neighbours of our current node, ignoring the visited nodes. This means we check G and E.
+For B, we add 1 (the minimum distance of A, our current node) with 3 (the weight of the edge connecting A and B) to obtain 4. We compare that 4 with the minimum distance of B (infinity) and leave the smallest value: 4.
 
-For G, we add 3 (the minimum distance of F, our current node) with 3 (the weight of the edge connecting F and G) to obtain 6. We compare that 6 with the minimum distance of G (5) and leave the smallest value; therefore, the 5 remains untouched.
+![Graph example](graph_a1.png "")
 
-For E, we add 3+2 = 5 and compare that value with 4; we leave the 4.
+Afterwards, we mark A as visited and pick a new current node: D, which is the non-visited node with the smallest current distance.
 
-Afterwards, we mark F as visited and pick a new current node: E, which is the non-visited node with the smallest current distance.
+![Graph example](graph-d.png "")
 
-![Graph example](dj-f.png "")
+We repeat the algorithm again. This time, we check B and E.
 
-We repeat the algorithm again. This time, we only check B. We obtain 4+1 = 5; we compare that value with B's minimum distance (5) and leave the minimum one (5). We mark E as visited and pick a new current node. Both G and B have a minimum distance of 5, so we may pick any of them as current node.
+For B, we obtain 2 + 5 = 7. We compare that value with B's minimum distance (4) and leave the smallest value (4). For E, we obtain 2 + 7 = 9, compare it with the minimum distance of E (infinity) and leave the smallest one (9).
 
-Let's skip to the future. After we've marked every node as visited, we'll have this:
+We mark D as visited and set our current node to B.
 
-![Graph example](dj-end.png "")
+![Graph example](graph-b.png "")
 
-We're done! The minimum distance of each node now actually represents the minimum distance from that node to node A (the node we picked as our initial node)!
+Almost there. We only need to check E. 4 + 1 = 5, which is less than E's minimum distance (9), so we leave the 5. Then, we mark B as visited and set E as the current node.
+
+![Graph example](graph-e.png "")
+
+E doesn't have any non-visited neighbours, so we don't need to check anything. We mark it as visited.
+
+![Graph example](graph-final.png "")
+
+As there are not univisited nodes, we're done! The minimum distance of each node now actually represents the minimum distance from that node to node A (the node we picked as our initial node)!
 
 Here's a description of the algorithm:
 1. Mark your selected node with a current distance of 0 and the rest with infinity.
