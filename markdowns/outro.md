@@ -9,7 +9,8 @@ Here's Dijkstra's Algorithm again:
 
 Let's see some small enhancements we may apply to the algorithm:
 * If you only need the path between two specific nodes, you can stop the algorithm as soon as you mark your second node as visited.
-* Sometimes, there are several minimum paths between two nodes. In our example, there are two minimum paths between A and B: [A,B] and [A,E,B]. If you wish, you can keep track of all those variants: in step 3, if there is a tie between the calculated value and the current distance, save both the old current path and the new one. This complicates the tracking, but it may be useful to you.
+* Sometimes, there are several minimum paths between two nodes (different paths with the same weights). If you wish, you can keep track of all those variants: in step 3, if there is a tie between the calculated value and the current distance, save both the old current path and the new one. This complicates the tracking, but it may be useful to you.
+* If you finish the algorithm because there are not univisted nodes left but there are nodes which minimum distance is still infinity, those nodes don't have any valid path to the original node.
 
 # Ending
 

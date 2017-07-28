@@ -2,72 +2,67 @@
 
 Let's run the algorithm again in our graph:
 
-![Graph example](dj-mark.png "")
+![Graph example](graph.png "")
 
  This time, however, let's keep track of the actual shortest paths. They all begin empty, except for the path of the initial node, which simply contains it:
 
 ```python
-pathA = [A]
-pathB = []
-pathC = []
-pathD = []
-pathE = []
-pathF = []
-pathG = []
+path to A = empty
+path to B = empty
+path to C = C
+path to D = empty
+path to E = empty
 ```
 
-The new thing is that we will update those lists every time we modify the minimum distance of a node.
+The new thing is that we will update those paths _every time we modify the minimum distance of a node_.
 
-Let's check the neighbours of our current node. Let's begin with G. We add 0+5 = 5. As that value is less than infinity, we change the minimum distance of G with it and replace the current path of G (which is empty) with the list of the current node (`[A]`) + G. This means that `pathG = [A, G]`. 
+Let's check the neighbours of our current node. Let's begin with B. We add 0 + 7 = 7. As that value is less than infinity, we change the minimum distance of B with it _and replace the current path to B_ with the path to the current node (`path to C`, which is `C`), plus `B`. This means that `path to B = C, B`.
 
-![Graph example](dj-1.png "")
+We repeat the procedure with neighbours A and D. After that, our graph and paths are as follows:
 
-So far, so good. Now, let's check neighbour F. We add 0 + 3 = 3, and replace the infinity value with that. We also replace the current path of F (which is empty) with the list of the current node + F: `pathF = [A, F]`.
-
-Let's fast-forward a bit. Suppose we've just marked A as visited:
-
-![Graph example](dj-f.png "")
+![Graph example](graph_cok.png "")
 
 ```python
-pathA = [A]
-pathB = [A,B]
-pathC = []
-pathD = []
-pathE = [A,E]
-pathF = [A,F]
-pathG = [A,G]
+path to A = C, A
+path to B = C, B
+path to C = C
+path to D = C, D
+path to E = empty
 ```
 
-Our next current node will be F. When we check its neighbours, we don't modify any minimum distance. Because of that, we also don't replace any current path. Remember: we only replace a current path when we modify the corresponding minimum distance.
+Our current node is now set to A. We check its only non-visited neighbour, B. As we replace the minimum distance of B from 7 to 4, we also replace its current path with the path of the current node A (`C, A`), plus B: `path to B = C, A, B`).
 
-Let's fast-forward again. We've just marked B as visited, and our current node is set to D.
 
-![Graph example](dj-d.png "")
+![Graph example](graph_a1.png "")
 
 ```python
-pathA = [A]
-pathB = [A,B]
-pathC = [A,B,C]
-pathD = [A,B,D]
-pathE = [A,E]
-pathF = [A,F]
-pathG = [A,G]
+path to A = C, A
+path to B = C, A, B
+path to C = C
+path to D = C, D
+path to E = empty
 ```
 
-We check the only non-visited neighbour of D: C. We add 6+3=9. As that value is less than 10, we change the 10 for the 9 and replace the current path of C for the current path of D + C, so `pathC = [A,B,D,C]`.
+We mark A as visited and select our next current node: D. We check two neighbours: B and E. When checking B, we don't replace its minimum distance (as the existing 4 is less than the calculated 7), so we don't replace its current path, either. Remember: we only replace the path when we modify the minimum distance of a node. We then check neighbour E, update its minimum distance (9, which is less than infinity) and path (`path to E = C, D, E`, which is the `path to D` plus E), and are left with this:
 
-Finally, we set C as our current node. It has no unvisited neighbours, so we're already done with it.
-
-After we finish the algorithm, our paths will be the following:
+![Graph example](graph_b.png "")
 
 ```python
-pathA = [A]
-pathB = [A,B]
-pathC = [A,B,D,C]
-pathD = [A,B,D]
-pathE = [A,E]
-pathF = [A,F]
-pathG = [A,G]
+path to A = C, A
+path to B = C, A, B
+path to C = C
+path to D = C, D
+path to E = C, D, E
 ```
 
-Those are the minimum paths between A and every other node!
+Let's fast-forward a bit: we continue applying the algorithm until we're done. After we finish, our paths will be the following:
+
+```python
+path to A = C, A
+path to B = C, A, B
+path to C = C
+path to D = C, D
+path to E = C, A, B, E
+```
+
+Congratulations! Those are the minimum paths between C and every other node!
