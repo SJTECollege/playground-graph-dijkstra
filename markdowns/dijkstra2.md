@@ -43,7 +43,11 @@ path to D = C, D
 path to E = empty
 ```
 
-We mark A as visited and select our next current node: D. We check two neighbours: B and E. When checking B, we don't replace its minimum distance (as the existing 4 is less than the calculated 7), so we don't replace its current path, either. Remember: we only replace the path when we modify the minimum distance of a node. We then check neighbour E, update its minimum distance (9, which is less than infinity) and path (`path to E = C, D, E`, which is the `path to D` plus E), and are left with this:
+We mark A as visited and select our next current node: D. We check two neighbours: B and E.
+
+When checking B, we don't replace its minimum distance (as the existing 4 is less than the calculated 7), so we don't replace its current path, either. Remember: we only replace a path when we modify the minimum distance of a node.
+
+We then check neighbour E, update its minimum distance (9, which is less than infinity) and path (`path to E = C, D, E`, which is the `path to D` plus E), and are left with this:
 
 ![Graph example](graph_b.png "")
 
@@ -55,7 +59,9 @@ path to D = C, D
 path to E = C, D, E
 ```
 
-Let's fast-forward a bit: we continue applying the algorithm until we're done. After we finish, our paths will be the following:
+Let's fast-forward a bit: we continue applying the algorithm until we're done. After we finish, our graph and paths will be the following:
+
+![Graph example](graph_final.png "")
 
 ```python
 path to A = C, A

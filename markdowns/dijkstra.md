@@ -32,7 +32,7 @@ We now need to pick a new _current node_. That node must be the unvisited node w
 
 And now we repeat the algorithm. We check the neighbours of our current node, ignoring the visited nodes. This means we only check B.
 
-For B, we add 1 (the minimum distance of A, our current node) with 3 (the weight of the edge connecting A and B) to obtain 4. We compare that 4 with the minimum distance of B (infinity) and leave the smallest value: 4.
+For B, we add 1 (the minimum distance of A, our current node) with 3 (the weight of the edge connecting A and B) to obtain 4. We compare that 4 with the minimum distance of B (7) and leave the smallest value: 4.
 
 ![Graph example](graph_a1.png "")
 
@@ -56,17 +56,17 @@ E doesn't have any non-visited neighbours, so we don't need to check anything. W
 
 ![Graph example](graph_final.png "")
 
-As there are not univisited nodes, we're done! The minimum distance of each node now actually represents the minimum distance from that node to node A (the node we picked as our initial node)!
+As there are not univisited nodes, we're done! The minimum distance of each node now actually represents the minimum distance from that node to node C (the node we picked as our initial node)!
 
 Here's a description of the algorithm:
-1. Mark your selected node with a current distance of 0 and the rest with infinity.
-2. Set the non-visited node with the smallest current distance as the current node C.
-3. For each neighbour N of your current node: add the current distance of C with the weight of the edge connecting C-N. If it's smaller than the current distance of N, set it as the new current distance of N.
-4. Mark the current node as visited.
-5. If there are unvisited nodes, go to step 2.
+1. Mark your selected initial node with a current distance of 0 and the rest with infinity.
+2. Set the non-visited node with the smallest current distance as the current node `C`.
+3. For each neighbour `N` of your current node `C`: add the current distance of `C` with the weight of the edge connecting `C`-`N`. If it's smaller than the current distance of `N`, set it as the new current distance of `N`.
+4. Mark the current node `C` as visited.
+5. If there are non-visited nodes, go to step 2.
 
 # Exercise
-The shown function is used during step 2 in the algorithm. It selects the node that should be set as current node. Fix it so it picks the correct node.
+The shown Python function is used during step 2 in the algorithm. It selects the node that should be set as current node. Fix it so it picks the correct node.
 
 @[The shown function should select a new current node for Dijkstra's Algorithm. Fix it so it does it correctly.]({"stubs": ["nodes.py"], "command": "python3 test_nodes.py"})
 
