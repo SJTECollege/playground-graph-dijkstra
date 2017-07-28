@@ -38,7 +38,7 @@ For B, we add 1 (the minimum distance of A, our current node) with 3 (the weight
 
 Afterwards, we mark A as visited and pick a new current node: D, which is the non-visited node with the smallest current distance.
 
-![Graph example](graph-d.png "")
+![Graph example](graph_d.png "")
 
 We repeat the algorithm again. This time, we check B and E.
 
@@ -46,15 +46,15 @@ For B, we obtain 2 + 5 = 7. We compare that value with B's minimum distance (4) 
 
 We mark D as visited and set our current node to B.
 
-![Graph example](graph-b.png "")
+![Graph example](graph_b.png "")
 
 Almost there. We only need to check E. 4 + 1 = 5, which is less than E's minimum distance (9), so we leave the 5. Then, we mark B as visited and set E as the current node.
 
-![Graph example](graph-e.png "")
+![Graph example](graph_e.png "")
 
 E doesn't have any non-visited neighbours, so we don't need to check anything. We mark it as visited.
 
-![Graph example](graph-final.png "")
+![Graph example](graph_final.png "")
 
 As there are not univisited nodes, we're done! The minimum distance of each node now actually represents the minimum distance from that node to node A (the node we picked as our initial node)!
 
