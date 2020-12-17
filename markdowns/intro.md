@@ -1,6 +1,6 @@
 # Welcome!
 
-This short playground will give you some fundamentals about Dijkstra's algorithm.
+This short playground will give you some fundamentals about Dijkstra's famous algorithm.
 
 # Prerequisites
 * Graph Theory Basics: graphs, vertices and edges. You can learn all of it in this Playground: [Graph Theory Basics](https://tech.io/playgrounds/5470/graph-theory-basics).
