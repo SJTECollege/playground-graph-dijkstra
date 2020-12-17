@@ -1,22 +1,16 @@
-title : Shortest paths with Dijkstra's Algorithm
-
-# Table of content
+title: 'Shortest paths: Dijkstra''s Algorithm'
 plan:
-  - title: Introduction # Set the page title
-    statement: markdowns/intro.md # Set the file path to the page content
-  - title: Dijkstra's Algorithm
-    statement: markdowns/dijkstra.md
-  - title: Keeping track of paths
-    statement: markdowns/dijkstra2.md
-  - title: Ending
-    statement: markdowns/outro.md
-
-
-# Settings for your programming projects and the associated Docker images
+- title: Introduction
+  statement: markdowns/intro.md
+- title: Dijkstra's Algorithm
+  statement: markdowns/dijkstra.md
+- title: Keeping track of paths
+  statement: markdowns/dijkstra2.md
+- title: Ending
+  statement: markdowns/outro.md
 projects:
   python:
-    root: /python-project # Set the root path to your Python project
-
-    # Set the docker image. This image runs tests using this syntax:
-    # @[Code Editor Title]({"stubs": ["editor_file1.py", "editor_file2.py", ...], "command": "python3 test_file.py"})
-    runner: python:3
+    root: /python-project
+    runner:
+      name: python
+      version: '3'
